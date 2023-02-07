@@ -4,3 +4,5 @@ const withAuth = require('../utils/auth');
 //require all models
 
 //what to put in homeRoutes..
+
+module.exports = router;
