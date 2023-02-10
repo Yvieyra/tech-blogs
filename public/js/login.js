@@ -37,7 +37,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');//what endpoint?
+        document.location.replace('/profile');//what endpoint?
       } else {
         alert(response.statusText);
       }
