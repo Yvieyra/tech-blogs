@@ -14,9 +14,9 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/profile'); //is page correct?
       } else {
-        alert('Failed to create project');
+        alert('Failed to create blog');
       }
     }
   };

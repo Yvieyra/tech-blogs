@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
-        document.location.replace('/');// what landing page? 
+        document.location.replace('/login');// what landing page? profile or homepage
       } else {
         alert(response.statusText);
       }
@@ -37,7 +37,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');//what endpoint?
+        document.location.replace('/login');//what endpoint?
       } else {
         alert(response.statusText);
       }
