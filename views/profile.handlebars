@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome back, {{name}}!</h2>
   </div>
 </div>
 
@@ -23,22 +23,24 @@
     </form>
   </div>
 
-  {{#if blogs.length}}
-  <div class="col-md-6 blog-list">
-    <h3>All Blogs:</h3>
 
-    {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blogs/{{blog.id}}">{{blog.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
+<h3>Your Blogs:</h3>
+{{#each blogs as |blog| }}
+<div class="row mb-4 blog">
+  <div class="col-md-5">
+    <h4>
+      <a href="/blogs/{{blog.id}}">{{blog.title}}</a>
+    </h4>
+  <div class="col-md-7">
+    <p>
+      {{blog.content}}
+    </p>
   </div>
-  {{/if}}
+  <div>
+    <p>Posted on {{format_date blog.date_created}}</p>
+  </div>
+   <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
 </div>
+{{/each}}
 
 <script src="./js/profile.js"></script>

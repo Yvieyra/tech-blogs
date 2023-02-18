@@ -3,7 +3,7 @@ const { Blog, User } = require('../models');
 const withAuth = require('../utils/auth');
 //homeRoute endpoints
 
-// Get all blogs and JOIN with user data
+//http://localhost:3001/
 router.get('/', async (req, res) => {
   try {
 
@@ -51,7 +51,7 @@ router.get('/blogs/:id', async (req, res) => { //does render one blog with comme
   }
 });
 
-// Use withAuth middleware to prevent access to route
+//http://localhost:3001/profile
 router.get('/profile', withAuth, async (req, res) => { //problem, renders to login page 
   try {
     // Find the logged in user based on the session ID
@@ -62,7 +62,7 @@ router.get('/profile', withAuth, async (req, res) => { //problem, renders to log
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('profile', { //currently takes user to create a new blog and view all only their existing blogs below 
       ...user,
       logged_in: true
     });
@@ -71,14 +71,14 @@ router.get('/profile', withAuth, async (req, res) => { //problem, renders to log
   }
 });
 
+//http://localhost:3001/login
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
   }
 
-  res.render('login');
+  res.render('login'); //currently takes user to either login or sign up 
 });
 
 module.exports = router;
