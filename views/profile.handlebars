@@ -24,23 +24,24 @@
   </div>
 
 
-<h3>Your Blogs:</h3>
-{{#each blogs as |blog| }}
-<div class="row mb-4 blog">
-  <div class="col-md-5">
-    <h4>
-      <a href="/blogs/{{blog.id}}">{{blog.title}}</a>
-    </h4>
-  <div class="col-md-7">
-    <p>
-      {{blog.content}}
-    </p>
+  {{#if blogs.length}}
+  <div class="col-md-6 blog-list">
+    <h3>Your Blogs:</h3>
+
+    {{#each blogs as |blog|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <p><a href="/blogs/{{blog.id}}">{{blog.title}}</a></p>
+        <p>{{blog.content}}</p>
+        <p>Posted on {{format_date blog.date_created}}</p>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
   </div>
-  <div>
-    <p>Posted on {{format_date blog.date_created}}</p>
-  </div>
-   <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+  {{/if}}
 </div>
-{{/each}}
 
 <script src="./js/profile.js"></script>
