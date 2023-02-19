@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//http://localhost:3001/blogs/1
 router.get('/blogs/:id', async (req, res) => { //does render one blog with comment button that has no functionality yet 
   try {
     const blogData = await Blog.findByPk(req.params.id, {
