@@ -37,8 +37,8 @@ router.post('/', withAuth, async (req, res) => {
     }
   });
   
-//http://localhost:3001/api/blogs/1
-router.post('/:id', withAuth, async (req, res) => {
+//http://localhost:3001/api/blogs/comment
+router.post('/comment', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({ //posts a new comment created by the user
       ...req.body,
@@ -47,6 +47,7 @@ router.post('/:id', withAuth, async (req, res) => {
 
     res.status(200).json(newComment);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

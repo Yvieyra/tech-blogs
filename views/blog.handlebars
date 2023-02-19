@@ -2,14 +2,15 @@
   <h2>{{name}}</h2>
   <p>{{content}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  
+  <p>All Comments:</p> <br>
+  <p>{{comment_text}}</p>
+
   <div class="form-group" >
         <label for="blog-comment">Comment Below:</label> <br>
         <textarea class="form-input" id="blog-comment" name="blog-content"></textarea> <br>
         <button class="btn btn-primary">Post Comment</button>
  
   </div>
-
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="/js/comment.js"></script>

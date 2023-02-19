@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 //homeRoute endpoints
 
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['name']
         },
       ],
     });
@@ -53,7 +53,7 @@ router.get('/blogs/:id', async (req, res) => { //does render one blog with comme
 });
 
 //http://localhost:3001/profile
-router.get('/profile', withAuth, async (req, res) => { //problem, renders to login page 
+router.get('/profile', withAuth, async (req, res) => { 
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => { //problem, renders to log
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', { //currently takes user to create a new blog and view all only their existing blogs below 
+    res.render('profile', { //currently takes user to create a new blog and view only their existing blogs below 
       ...user,
       logged_in: true
     });
