@@ -29,33 +29,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-//http://localhost:3001/comment
-router.get('/comment', async (req, res) => {
-  try {
-
-    const commentData = await Comment.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name']
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const comments = commentData.map((comment) => comment.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { //renders all blogs and content 
-      comments,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
 //http://localhost:3001/blogs/1
 router.get('/blogs/:id', async (req, res) => { //does render one blog with comment button that has no functionality yet 
   try {
@@ -64,6 +37,9 @@ router.get('/blogs/:id', async (req, res) => { //does render one blog with comme
         {
           model: User,
           attributes: ['name'],
+        },
+        {
+          model: Comment
         },
       ],
     });
@@ -85,7 +61,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
+      include: [{ model: Blog, Comment }],
     });
 
     const user = userData.get({ plain: true });
