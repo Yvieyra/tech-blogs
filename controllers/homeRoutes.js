@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name']
         },
+        {
+          model: Comment
+        },
       ],
     });
 
@@ -56,7 +59,7 @@ router.get('/blogs/:id', async (req, res) => { //does render one blog with comme
 });
 
 //http://localhost:3001/profile
-router.get('/profile', withAuth, async (req, res) => { 
+router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
