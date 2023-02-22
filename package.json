@@ -152,7 +152,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "dbStart": "node models/index.js && node seeds/seed.js && node server.js"
   },
   "repository": {
     "type": "git",

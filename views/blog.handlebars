@@ -6,6 +6,8 @@
  {{#each comments}}
     <p>{{comment_text}}  |  {{ format_date date_created}}</p>
   {{/each}}
+{{!-- {{#each comments as |comment|}}
+{{comment.comment_text}} --}}
 
   <div class="form-group" >
         <label for="blog-comment">Comment Below:</label> <br>
