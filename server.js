@@ -10,7 +10,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const ip="0.0.0.0"
+const ip = "0.0.0.0" //added ti deploy to railway
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
@@ -43,5 +43,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, ip, () => console.log('Now listening'));
+  app.listen(PORT, ip, () => console.log('Now listening')); //added to deploy to railway
 });
